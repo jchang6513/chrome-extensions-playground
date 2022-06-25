@@ -1,16 +1,7 @@
-const metadataEl = document.getElementById("metadata");
-
-let metadata = {}
-
 chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-  chrome.tabs.sendMessage(tabs[0].id, undefined, function(response) {
+  chrome.tabs.sendMessage(tabs[0].id, { type: 'data' }, function(response) {
     if (response) {
-      metadata = response.metadata;
-      $('#metadata').JSONView(metadata)
+      $('#metadata').JSONView(response.metadata)
     }
   });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-  console.log($('#metadata'))
 });
