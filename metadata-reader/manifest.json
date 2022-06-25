@@ -1,0 +1,23 @@
+{
+  "name": "metadata-reader",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": ["tabs", "activeTab"],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*/*"],
+      "js": ["content-script.js"]
+    }
+  ],
+  "icons": {
+    "16": "icon-16x16.png",
+    "32": "icon-32x32.png",
+    "128": "icon-128x128.png"
+  }
+}
